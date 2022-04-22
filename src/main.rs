@@ -12,9 +12,9 @@ async fn main() -> Result<(), Error> {
 async fn hello(request: Request, _: Context) -> Result<impl IntoResponse, Error> {
     // `serde_json::Values` impl `IntoResponse` by default
     // creating an application/json response
-    let body = request.body();
+    let method = request.method();
     Ok(format!(
-        "Hello, you have chosen: {:?}", body
+        "Hello, you have chosen: {}", method
     ))
 }
 
